@@ -1,0 +1,38 @@
+@model IEnumerable<Dealer>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-row justify-content-between mb-4">
+  <span class="d-inline"><h2>Request List</h2></span>
+  @Html.ActionLink("Добавить диллера", "Add", "Dealer", "",new { @class="btn btn-primary", role="button"})
+</div>
+
+
+<div class="container">
+    
+    
+   <table class="table table-hover">
+     <thead>
+       <tr>
+         <th scope="col">#</th>
+         <th scope="col">Brand</th>
+         <th scope="col">City Number</th>
+         
+       </tr>
+     </thead>
+     <tbody>
+        @foreach (var dealer in this.Model)
+         {
+          <tr>
+            <th scope="row">@dealer.Id</th>
+            <td>@dealer.Brand</td>
+            <td>@dealer.City</td>
+            
+          </tr>
+         }
+     </tbody>
+   </table>
+</div>

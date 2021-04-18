@@ -1,0 +1,36 @@
+@model IEnumerable<Car>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-row justify-content-between mb-4">
+  <span class="d-inline"><h2>All Cars</h2></span>
+    @Html.ActionLink("Add Car", "AddCar", "Car", "",new { @class="btn btn-primary", role="button"})
+</div>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+    
+        @foreach (var car in this.Model)
+        {
+        <a href="/Car/InfoCar/@car.Id">
+            <tr onclick="location.href ='/Car/InfoCar/@car.Id'">
+
+                <th scope="row">@car.Id</th>
+                <td>@car.Name</td>
+
+            </tr>
+        </a>
+        }
+        </tbody>
+    </table>
+</div>

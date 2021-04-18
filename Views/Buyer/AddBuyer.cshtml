@@ -1,0 +1,37 @@
+@model IEnumerable<City>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Add Buyer</h2>
+<form method="post" action="/Buyer/Put">
+    <div class="form-group">
+        <label for="FirstName">First name <small class="text-danger"> (requied)</small></label>
+        <input type="text" name="FirstName" class="form-control" id="FirstName" aria-describedby="emailHelp" required>
+        
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last name <small class="text-danger"> (requied)</small></label>
+    <input type="text" name="LastName" class="form-control" id="LastName" required>
+    </div>
+    <div class="form-group">
+        <label for="MiddleName">Middle name</label>
+        <input type="text" name="MiddleName" class="form-control" id="MiddleName">
+    </div>
+    <div class="form-group">
+        <label for="PassportNumber">Passport <small class="text-danger"> (requied)</small></label>
+        <input type="text" name="PassportNumber" class="form-control" id="PassportNumber" required>
+    </div>
+    <div class="form-group">
+            <label for="CitySelect">City <small class="text-danger"> (requied)</small></label>
+            <select class="form-control" id="CitySelect" name="CityId" required>
+                @foreach (var city in this.Model)
+                {
+                    <option value="@city.Id">@city.Name</option>
+                }
+            </select>
+        </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
